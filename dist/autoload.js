@@ -1,6 +1,6 @@
 // live2d_path 参数建议使用绝对路径
-const live2d_path = 'https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0-rc.3/dist/';
-// const live2d_path = '/dist/';
+// const live2d_path = 'https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0-rc.3/dist/';
+const live2d_path = 'C:/Users/Alan6/blog/live2d-widget/dist/';
 
 // 封装异步加载资源的方法
 function loadExternalResource(url, type) {
@@ -43,9 +43,9 @@ function loadExternalResource(url, type) {
   // 配置选项的具体用法见 README.md
   initWidget({
     waifuPath: live2d_path + 'waifu-tips.json',
-    // cdnPath: 'https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/',
+    cdnPath: '/live2d_api/',
     cubism2Path: live2d_path + 'live2d.min.js',
-    cubism5Path: 'https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js',
+    cubism5Path: live2d_path+'live2dcubismcore.min.js',
     tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit'],
     logLevel: 'warn',
     drag: false,

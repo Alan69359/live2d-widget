@@ -249,7 +249,7 @@ class ModelManager {
           this.resetCanvas();
         }
         if (this.currentModelVersion === 2 || !this.cubism5model.subdelegates.at(0)) {
-          this.cubism5model.initialize();
+          // this.cubism5model.initialize();
           this.cubism5model.changeModel(modelSettingPath);
           this.cubism5model.run();
         } else {
