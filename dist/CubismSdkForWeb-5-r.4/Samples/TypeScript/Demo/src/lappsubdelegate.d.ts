@@ -1,0 +1,32 @@
+import { LAppGlManager } from './lappglmanager';
+import { LAppLive2DManager } from './lapplive2dmanager';
+import { LAppTextureManager } from './lapptexturemanager';
+export declare class LAppSubdelegate {
+    constructor();
+    release(): void;
+    initialize(canvas: HTMLCanvasElement): boolean;
+    onResize(): void;
+    private resizeObserverCallback;
+    update(): void;
+    createShader(): WebGLProgram;
+    getTextureManager(): LAppTextureManager;
+    getFrameBuffer(): WebGLFramebuffer;
+    getCanvas(): HTMLCanvasElement;
+    getGlManager(): LAppGlManager;
+    getLive2DManager(): LAppLive2DManager;
+    private resizeCanvas;
+    onPointBegan(pageX: number, pageY: number): void;
+    onPointMoved(pageX: number, pageY: number): void;
+    onPointEnded(pageX: number, pageY: number): void;
+    onTouchCancel(pageX: number, pageY: number): void;
+    isContextLost(): boolean;
+    private _canvas;
+    private _view;
+    private _textureManager;
+    private _frameBuffer;
+    private _glManager;
+    private _live2dManager;
+    private _resizeObserver;
+    private _captured;
+    private _needResize;
+}

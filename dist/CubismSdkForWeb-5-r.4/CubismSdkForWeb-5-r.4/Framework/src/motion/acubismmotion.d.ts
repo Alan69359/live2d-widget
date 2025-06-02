@@ -1,0 +1,56 @@
+import { CubismModel } from '../model/cubismmodel';
+import { csmString } from '../type/csmstring';
+import { csmVector } from '../type/csmvector';
+import { CubismMotionQueueEntry } from './cubismmotionqueueentry';
+export type BeganMotionCallback = (self: ACubismMotion) => void;
+export type FinishedMotionCallback = (self: ACubismMotion) => void;
+export declare abstract class ACubismMotion {
+    static delete(motion: ACubismMotion): void;
+    constructor();
+    release(): void;
+    updateParameters(model: CubismModel, motionQueueEntry: CubismMotionQueueEntry, userTimeSeconds: number): void;
+    setupMotionQueueEntry(motionQueueEntry: CubismMotionQueueEntry, userTimeSeconds: number): void;
+    updateFadeWeight(motionQueueEntry: CubismMotionQueueEntry, userTimeSeconds: number): number;
+    setFadeInTime(fadeInSeconds: number): void;
+    setFadeOutTime(fadeOutSeconds: number): void;
+    getFadeOutTime(): number;
+    getFadeInTime(): number;
+    setWeight(weight: number): void;
+    getWeight(): number;
+    getDuration(): number;
+    getLoopDuration(): number;
+    setOffsetTime(offsetSeconds: number): void;
+    setLoop(loop: boolean): void;
+    getLoop(): boolean;
+    setLoopFadeIn(loopFadeIn: boolean): void;
+    getLoopFadeIn(): boolean;
+    getFiredEvent(beforeCheckTimeSeconds: number, motionTimeSeconds: number): csmVector<csmString>;
+    abstract doUpdateParameters(model: CubismModel, userTimeSeconds: number, weight: number, motionQueueEntry: CubismMotionQueueEntry): void;
+    setBeganMotionHandler: (onBeganMotionHandler: BeganMotionCallback) => BeganMotionCallback;
+    getBeganMotionHandler: () => BeganMotionCallback;
+    setFinishedMotionHandler: (onFinishedMotionHandler: FinishedMotionCallback) => FinishedMotionCallback;
+    getFinishedMotionHandler: () => FinishedMotionCallback;
+    isExistModelOpacity(): boolean;
+    getModelOpacityIndex(): number;
+    getModelOpacityId(index: number): CubismIdHandle;
+    protected getModelOpacityValue(): number;
+    protected adjustEndTime(motionQueueEntry: CubismMotionQueueEntry): void;
+    _fadeInSeconds: number;
+    _fadeOutSeconds: number;
+    _weight: number;
+    _offsetSeconds: number;
+    _isLoop: boolean;
+    _isLoopFadeIn: boolean;
+    _previousLoopState: boolean;
+    _firedEventValues: csmVector<csmString>;
+    _onBeganMotion?: BeganMotionCallback;
+    _onFinishedMotion?: FinishedMotionCallback;
+}
+import * as $ from './acubismmotion';
+import { CubismIdHandle } from '../id/cubismid';
+export declare namespace Live2DCubismFramework {
+    const ACubismMotion: typeof $.ACubismMotion;
+    type ACubismMotion = $.ACubismMotion;
+    type BeganMotionCallback = $.BeganMotionCallback;
+    type FinishedMotionCallback = $.FinishedMotionCallback;
+}

@@ -1,6 +1,6 @@
 // live2d_path 参数建议使用绝对路径
 // const live2d_path = 'https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0-rc.3/dist/';
-const live2d_path = 'C:/Users/Alan6/blog/live2d-widget/dist/';
+const live2d_path = '/live2d-widget/';
 
 // 封装异步加载资源的方法
 function loadExternalResource(url, type) {
