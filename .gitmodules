@@ -1,0 +1,3 @@
+[submodule "live2d_api"]
+	path = live2d_api
+	url = https://github.com/fghrsh/live2d_api
